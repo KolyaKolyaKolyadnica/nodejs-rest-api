@@ -3,9 +3,9 @@ module.exports = {
   validateBody: (req, res, next) => {
     const { name, email, phone } = req.body;
     const schema = Joi.object({
-      name: Joi.string().alphanum().min(1).max(30).required(),
+      name: Joi.string().min(1).max(30).required(),
       email: Joi.string().email().required(),
-      phone: Joi.number().integer().required(),
+      phone: Joi.string().required(),
     });
     const validation = schema.validate({ name, email, phone });
     if (validation.error) {
